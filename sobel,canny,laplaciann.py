@@ -1,9 +1,12 @@
 import cv2
+import numpy as np
 import matplotlib.pyplot as plt
 
-//TYPE THE CODE HERE TO READ THE IMAGE UISNG IMREAD 
-gray=cv2.cvtColor(img,)//CONVERT THE COLOR TO GRAY TO RGB
-gray = cv2.GaussianBlur(gray,(3,3),0)
+image = cv2.imread("C:/Users/admin/Downloads/Digital images/ex_6_image.jpg")
+gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
+plt.title('Original Image')
+plt.axis('off')
 
 sobelx = cv2.Sobel(gray,cv2.CV_64F,1,0,ksize=5)
 plt.figure(figsize=(8,8))
@@ -35,7 +38,10 @@ plt.subplot(1,2,1)
 plt.imshow(gray)
 plt.title("Original Image")
 plt.axis("off")
-//TYPE THE CODE HERE
+laplacian = cv2.Laplacian(gray_image, cv2.CV_64F)
+plt.imshow(laplacian, cmap='gray')
+plt.title('Laplacian Edge Detection')
+plt.axis('off')
 plt.imshow(sobelxy)
 plt.title("Sobel XY axis")
 plt.axis("off")
@@ -48,7 +54,10 @@ plt.imshow(gray)
 plt.title("Original Image")
 plt.axis("off")
 plt.subplot(1,2,2)
-//DISPLAY THE IMAGE USING IMSHOW 
+laplacian = cv2.Laplacian(gray_image, cv2.CV_64F)
+plt.imshow(laplacian, cmap='gray')
+plt.title('Laplacian Edge Detection')
+plt.axis('off') 
 plt.title("Laplacian Edge Detector")
 plt.axis("off")
 plt.show()
@@ -61,6 +70,9 @@ plt.title("Original Image")
 plt.axis("off")
 plt.subplot(1,2,2)
 plt.imshow(canny)
-//PROVIDE THE TITLE OF THE IMAGE DISPLAYED PAGE
+canny_edges = cv2.Canny(gray_image, 50, 150)
+plt.imshow(canny_edges, cmap='gray')
+plt.title('Canny Edge Detection')
+plt.axis('off')  
 plt.axis("off")
 plt.show()
